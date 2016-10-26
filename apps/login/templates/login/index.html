@@ -1,46 +1,192 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0">
-    <title>Adopt a Pet|Lost and Found</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Register</h1>
-    <form class="" action="{url 'login:process'}" method="post">
-      <input type="submit" name="button" value="Register">
-    </form>
-    <h1>Login</h1>
-    <form class="" action="{url 'login:process'}" method="post">
-      <input type="submit" name="button" value="Login">
-    </form>
-    <div id="map"></div>
-  <script>
-    function initMap() {
-      // Create a map object and specify the DOM element for display.
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 37.423021, lng: -122.083739},
-        scrollwheel: false,
-        zoom: 8
-      });
-    }
+<html lang="en">
 
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByVl3v_No6CrmaSErZidJ7jaFuZO6exro&callback=initMap"
-  async defer></script>
-  </script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title>Pet Lover</title>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Pet Lover</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div id ='login' style='color: #9d9d9d'>
+                    <form action='/sign_in' method='post' style='margin-left: 300px; display: inline-block; margin-top: 13px'>
+                        <input type='text' name='email' placeholder='Email Address'/>
+                        <input type='password' name='password' placeholder='Password'/>
+                        <input type='submit' name='submit' value='Login' style='btn btn-default btn-sm'/>
+                    </form>
+                    <button style='display: inline-block'><a href="/register">Register</a></button>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p style='color:red; margin-left: 730px'>{{ msg }}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Full Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                {% load staticfiles %}
+                <div class="fill" style="background-image:url('login/jpg');">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 style='margin-top:60px; color: white' class ="tagline"></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('../static/img/');">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 style='margin-top:60px; color: black' class ="tagline"></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('../static/img/');">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 style='margin-top:60px; color: black' class ="tagline"></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-caption">
+                </div>
+            </div>
+             <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('../static/');">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 style='margin-top:60px; color: black' class ="tagline"></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-caption">
+                </div>
+            </div>
+             <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('../static/');">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 style='margin-top:60px; color: black' class ="tagline"></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-caption">
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>
+
+    <div class="container">
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-8">
+                <h2>What We Do!</h2>
+                <p>Provide information about any local lost pet.</p>
+                <p>We build a local community where you can adopt or purchase your pet.</p>
+                <p>
+                    <a class="btn btn-info btn-lg" href="/register">Sign up Today!</a>
+                </p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-4">
+                {% load staticfiles %}
+                <img class="img-circle img-responsive img-center" src= "{%static 'login/image/location.png'%}" alt=""/>
+                <h2>Location</h2>
+                <p>Local animal shelter and pet store</p>
+            </div>
+            <div class="col-sm-4">
+                {% load staticfiles %}
+                <img class="img-circle img-responsive img-center" src="{%static 'login/image/lostandfound.png'%}" alt=""/>
+                <h2>Lost and Found</h2>
+                <p>Post/Search for your beloved pet</p>
+            </div>
+            <div class="col-sm-4">
+                {% load staticfiles %}
+                <img class="img-circle img-responsive img-center" src="{%static 'login/image/main0.jpg'%}" alt=""/>
+                <h2>Adoption and Purchase</h2>
+                <p>Information on adoption and purchase your pet</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Pet Society 2015</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+</body>
+
 </html>
