@@ -16,24 +16,19 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Pet Lover</a>
+                <a class="navbar-brand" href="/">Pet Lover</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div id ='login' style='color: #9d9d9d'>
                     <form action='/sign_in' method='post' style='margin-left: 300px; display: inline-block; margin-top: 13px'>
+                      {%csrf_token%}
                         <input type='text' name='email' placeholder='Email Address'/>
                         <input type='password' name='password' placeholder='Password'/>
                         <input type='submit' name='submit' value='Login' style='btn btn-default btn-sm'/>
                     </form>
                     <button style='display: inline-block'><a href="/register">Register</a></button>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for msg in messages %}
-                <p style='color:red; margin-left: 730px'>{{ msg }}</p>
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
+
                 </div>
             </div>
         </div>
@@ -146,8 +141,8 @@
 
         <div class="row">
             <div class="col-sm-4">
-                {% load staticfiles %}
-                <img class="img-circle img-responsive img-center" src= "{%static 'login/image/location.png'%}" alt=""/>
+
+                <a href="/map">{% load staticfiles %}<img class="img-circle img-responsive img-center" src= "{%static 'login/image/location.png'%}" alt=""/></a>
                 <h2>Location</h2>
                 <p>Local animal shelter and pet store</p>
             </div>
@@ -172,7 +167,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Pet Society 2015</p>
+                    <p>Copyright &copy; Pet Society 2016</p>
                 </div>
             </div>
             <!-- /.row -->
@@ -181,11 +176,11 @@
     </div>
 
     <!-- Script to Activate the Carousel -->
-    <script>
+    <!-- <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
-    </script>
+    </script> -->
 
 </body>
 
