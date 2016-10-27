@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-import requests, json
-import googlemaps
-from datetime import datetime
+from django.contrib import messages
+import requests, json, googlemaps, datetime
+from .models import Pet, User
+from .forms import PetForm
+
 # Create your views here.
 gmaps = googlemaps.Client(key = 'AIzaSyDWRoV2ae3J-BCp0LKXcoFdmpHxIEQnXXE')
 
@@ -24,6 +26,9 @@ def process(request):
             '''login'''
             return redirect(reverse('login:main'))
     return redirect(reverse('login:login'))
+def main(request):
+
+    return render(request, 'login/index.html')
 
 def map(request):
     buy_url = 'https://data.kingcounty.gov/resource/nu2t-d4hv.json'
@@ -48,12 +53,38 @@ def adopt(request):
 def lost(request):
     lost_url = 'https://data.kingcounty.gov/resource/murn-chih.json'
     lost_json= requests.get(lost_url).json()
-
+    post = Pet.objects.filter(status = 'LOST')
     context = {
-    'lost' : lost_json
+    'lost' : lost_json,
+    'posts' : post,
+    'petForm': PetForm()
     }
     return render(request, 'login/lost.html', context)
 def lost_process(request):
     if request.method == 'POST':
-        List.objects.create(name = request.POST['name'], breed = request.POST['breed'], location = request.POST['location'], date= request.POST['date'], note = request.POST['note'], image = request.POST['image'], status = request.POST['status'])
+        bound_form = petForm(request.POST)
+        if bound_form.is_valid():
+            bound_form.save()
+        else:
+            for data in bound_form.errors.itervalues():
+                messages.error(request, data)
     return redirect(reverse('login:lost'))
+def found(request):
+    lost_url = 'https://data.kingcounty.gov/resource/murn-chih.json'
+    lost_json= requests.get(lost_url).json()
+    post = Pet.objects.filter(status = 'FOUND')
+    context = {
+    'found' : lost_json,
+    'posts' : post,
+    'petForm': PetForm()
+    }
+    return render(request, 'login/found.html', context)
+def found_process(request):
+    if request.method == 'POST':
+        bound_form = petForm(request.POST)
+        if bound_form.is_valid():
+            bound_form.save()
+        else:
+            for data in bound_form.errors.itervalues():
+                messages.error(request, data)
+    return redirect(reverse('login:found'))

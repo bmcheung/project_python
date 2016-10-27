@@ -7,9 +7,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style media="screen">
+      body{
+        padding: 10px;
+      }
+    </style>
   </head>
   <body>
-    <form class="" action="#" method="post" style = 'border:1px solid black; padding:5px; height:auto; width:300px;'>
+    <button type="button" name="button"><a href="{%url 'login:found'%}">Found a pet?</a></button>
+    <button type="button" name="button"><a href="{%url 'login:main'%}">Home</a></button>
+    <form class="" action="#" method="post" style = 'border:1px solid black; padding:5px; height:auto; width:330px;'>
       {%csrf_token%}
       <p><input type="text" name="pet_name" placeholder="Name"></p>
       <p><input type="text" name="pet_breed" placeholder="Breed"></p>
@@ -25,7 +32,10 @@
         <input type="submit" name="name" value="Submit">
       </p>
     </form>
-
+    {%for post in posts%}
+    {{post.name}}
+    {{post.location_lost}}
+    {%endfor%}
     {%for pet in lost%}
     {%if pet.record_type == 'LOST'%}
     <br>

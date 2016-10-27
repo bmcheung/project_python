@@ -7,5 +7,8 @@ urlpatterns = [
     url(r'^process/$', views.process, name = 'process'),
     url(r'^map/$', views.map, name = 'map'),
     url(r'^adopt/$', views.adopt, name = 'adopt'),
-    url(r'^lostandfound/$', views.lost, name = 'lost')
+    url(r'^lost/$', views.lost, name = 'lost'),
+    url(r'^lost/process$', views.lost_process, name = 'lost_process'),
+    url(r'^found/$', views.found, name = 'found'),
+    url(r'^found/process$', views.found_process, name = 'found_process')
 ]
