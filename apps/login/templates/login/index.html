@@ -58,27 +58,37 @@
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
                 {% load staticfiles %}
-                <img src= "{%static 'login/image/main0.jpg'%}" alt="" width="560" height="500">
+                <!-- <img src= "{%static 'login/image/main0.jpg'%}" alt="" width="560" height="500"> -->
+                <!-- <img src= "https://i.kinja-img.com/gawker-media/image/upload/s--Wl2BmhXJ--/c_fit,fl_progressive,q_80,w_636/18ojqfnhcyt8tjpg.jpg" alt="" width="560" height="500"> -->
+                <!-- <img src= "http://i.imgur.com/ePIWYjA.gif" alt="" width="560" height="500"> -->
+                <!-- <img src= "http://i.imgur.com/ePIWYjA.gif" alt=""> -->
+                <img src= "http://www.barkdenver.com/files/5714/2126/5232/s5810nb9g6pio7lr.jpg" alt="">
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
                 {% load staticfiles %}
-                <img src= "{%static 'login/image/main1.jpg'%}" alt="" width="560" height="500">
+                <!-- <img src= "{%static 'login/image/main1.jpg'%}" alt="" width="560" height="500"> -->
+                <!-- <img src= "https://s-media-cache-ak0.pinimg.com/originals/7c/10/17/7c1017adf5a02a3dcef977ab7791b523.jpg" alt="" width="560" height="500"> -->
+                <!-- <img src= "https://i.redditmedia.com/jZSECyOcQoeQtUmBpXCMW-SskVo11n8fw5zZHqSMJTM.jpg?w=640&s=e9335ef4bdb86090c6e78e239264a47b" alt="" width="560" height="500"> -->
+                <img src= "https://i.redditmedia.com/jZSECyOcQoeQtUmBpXCMW-SskVo11n8fw5zZHqSMJTM.jpg?w=640&s=e9335ef4bdb86090c6e78e239264a47b" alt="" >
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
                 {% load staticfiles %}
                 <img src= "{%static 'login/image/main2.jpg'%}" alt="" width="560" height="500">
+                <!-- <img src= "http://boredomtherapy.com/wp-content/uploads/2014/05/bad-taxidemy-10.jpg" alt="" width="560" height="500"> -->
             </div>
              <div class="item">
                 <!-- Set the forth background image using inline CSS below. -->
                 {% load staticfiles %}
                 <img src= "{%static 'login/image/main3.jpg'%}" alt="" width="560" height="500">
+                <!-- <img src= "http://www.artnewsblog.com/wp-content/uploads/2013/09/bad-taxidermy-dogs.jpg" alt="" width="560" height="500"> -->
             </div>
              <div class="item">
                 <!-- Set the fifth background image using inline CSS below. -->
                 {% load staticfiles %}
                 <img src= "{%static 'login/image/main4.jpg'%}" alt="" width="560" height="500">
+                <!-- <img src= "http://boredomfiles.com/wp-content/uploads/2014/06/crappy-taxidermy-fb3.jpg" alt="" width="560" height="500"> -->
             </div>
         </div>
         <!-- Controls -->
@@ -118,13 +128,17 @@
             </div>
             <div class="col-sm-4">
                 {% load staticfiles %}
+                <a href="/lostandfound">
                 <img class="img-circle img-responsive img-center" src="{%static '/login/image/lostandfound.png'%}" alt=""/>
+                </a>
                 <h2>Lost and Found</h2>
                 <p>Post/Search for your beloved pet</p>
             </div>
             <div class="col-sm-4">
                 {% load staticfiles %}
+                <a href="/adopt">
                 <img class="img-circle img-responsive img-center" src="{% static '/login/image/adoption.png' %}" alt=""/>
+                </a>
                 <h2>Adoption and Purchase</h2>
                 <p>Information on adoption and purchase your pet</p>
             </div>
