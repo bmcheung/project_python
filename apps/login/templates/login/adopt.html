@@ -32,6 +32,12 @@
     <p>
       {{pet.location_for_map}}
     </p>
+    <script type="text/javascript">
+      var x = "{{pet.memo|safe}}"
+    </script>
+    <script type="text/javascript">
+      console.log(x)
+    </script>
     <!-- <button onclick="myFacebookLogin()">Login with Facebook</button> -->
       <div
         class="fb-like"

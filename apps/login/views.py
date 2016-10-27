@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 import requests, json
+import googlemaps
+from datetime import datetime
 # Create your views here.
-
+gmaps = googlemaps.Client(key = 'AIzaSyDWRoV2ae3J-BCp0LKXcoFdmpHxIEQnXXE')
 
 def index(request):
     return render(request, 'login/index.html')
