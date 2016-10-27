@@ -8,9 +8,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   {% load staticfiles %}
-  <link href="../static/login/slider.css" rel="stylesheet">
+  <!-- <link href="../static/login/slider.css" rel="stylesheet"> -->
   <!-- <link rel="stylesheet" type="text/css" href="{% static 'login/slider.css' %}" /> -->
   <title>Pet Lover</title>
+  <style>
+ .carousel-inner > .item > img,
+ .carousel-inner > .item > a > img {
+     width: 70%;
+     margin: auto;
+ }
+ </style>
 </head>
 
 <body>
@@ -51,63 +58,27 @@
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
                 {% load staticfiles %}
-                <div class="fill" style="background-image:url('/login/image/main0.jpg');">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 style='margin-top:60px; color: white' class ="tagline"></h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-caption">
-                </div>
+                <img src= "{%static 'login/image/main0.jpg'%}" alt="" width="560" height="500">
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('../static/img/');">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 style='margin-top:60px; color: black' class ="tagline"></h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-caption">
-                </div>
+                {% load staticfiles %}
+                <img src= "{%static 'login/image/main1.jpg'%}" alt="" width="560" height="500">
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('../static/img/');">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 style='margin-top:60px; color: black' class ="tagline"></h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-caption">
-                </div>
+                {% load staticfiles %}
+                <img src= "{%static 'login/image/main2.jpg'%}" alt="" width="560" height="500">
             </div>
              <div class="item">
                 <!-- Set the forth background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('../static/');">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 style='margin-top:60px; color: black' class ="tagline"></h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-caption">
-                </div>
+                {% load staticfiles %}
+                <img src= "{%static 'login/image/main3.jpg'%}" alt="" width="560" height="500">
             </div>
              <div class="item">
                 <!-- Set the fifth background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('../static/');">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1 style='margin-top:60px; color: black' class ="tagline"></h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-caption">
-                </div>
+                {% load staticfiles %}
+                <img src= "{%static 'login/image/main4.jpg'%}" alt="" width="560" height="500">
             </div>
         </div>
         <!-- Controls -->
