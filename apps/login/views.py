@@ -13,10 +13,10 @@ def process(request):
     if request.method == 'POST':
         if request.POST['button']==Register:
             '''register'''
-            return redirect(reverse('login:adopt'))
+            return redirect(reverse('login:main'))
         elif request.POST['button']==Login:
             '''login'''
-            return redirect(reverse('login:adopt'))
+            return redirect(reverse('login:main'))
     return redirect(reverse('login:login'))
 
 def map(request):

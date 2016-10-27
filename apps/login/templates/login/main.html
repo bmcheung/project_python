@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>main page</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+          {% if messages %}
+          <ul class="list-group">
+              {% for message in messages %}
+              <li class="list-group-item list-group-item-success"><h2>{{ message }}</h2></li>
+              {% endfor %}
+              <li class="list-group-item list-group-item-success">Successfully logged in!</li>
+          </ul>
+          {% endif %}
+
+          <form action="{% url 'index' %}" method="POST" class="form-horizontal">
+              {% csrf_token %}
+              <input class="btn btn-default" id="submitbutton" type="submit" value="logout">
+          </form>
+          <hr>
+
+          <div class="row">
+              <div class="col-sm-8">
+                  <h2>What We Do!</h2>
+                  <p>At Pet Lover, we want to create a community for everyone to be able to search and post for their lost beloved pet.
+                   We want to help these beloved pets reunite with their families! If your pet has ventured too far from home, there are many steps
+                  you can take to locate your furry friend like posting to our Lost and Found Pets community. If you have found a lost pet,
+                  its owner may have posted information here as well. Pet Lover is here to help put your cherished
+                  creature back in your arms by spreading the word. It's so important not to lose hope your pet will find its way home again! </p>
+                  <h3>Adoption</h3>
+                  <p>Pet adoption is quickly becoming the preferred way to find a new dog, puppy, cat or kitten. Best of all, there are so many benefits when you adopt a dog or adopt a cat
+                    over buying. For instance, pet adoption will almost always be more affordable than buying a puppy for sale from a breeder or finding
+                    a kitten for sale from a litter. There are more benefits as well. Since pets in rescues and shelters usually come from a home where
+                    the owners ran out of money, got divorced, or had to move, it's common to find that the dogs and cats on our website are already
+                    housetrained, good with kids, or do well with other pets. People are finding out that buying a puppy for sale from a breeder isn't
+                    all it's cracked up to be and the stress of training a puppy is too much these days. Best of all, rescues care for their animals,
+                    and the dogs and cats don't leave the organization without having their shots and being taken to the vet. That means less stress,
+                    and more savings! So what are you waiting for? Go find that perfect pet!</p>
+              </div>
+          </div>
+          <!-- /.row -->
+
+          <hr>
+
+              <div class="col-sm-4">
+
+                  <a href="/map">{% load staticfiles %}
+                  <img class="img-circle img-responsive img-center" src= "{%static 'login/image/location.png'%}" alt=""/></a>
+                  <h2>Location</h2>
+                  <p>Local animal shelter and pet store</p>
+              </div>
+              <div class="col-sm-4">
+                  {% load staticfiles %}
+                  <img class="img-circle img-responsive img-center" src="{%static '/login/image/lostandfound.png'%}" alt=""/>
+                  <h2>Lost and Found</h2>
+                  <p>Post/Search for your beloved pet</p>
+              </div>
+              <div class="col-sm-4">
+                  {% load staticfiles %}
+                  <img class="img-circle img-responsive img-center" src="{% static '/login/image/adoption.png' %}" alt=""/>
+                  <h2>Adoption and Purchase</h2>
+                  <p>Information on adoption and purchase your pet</p>
+              </div>
+          </div>
+          <!-- /.row -->
+
+          <hr>
+
+          <!-- Footer -->
+          <footer>
+              <div class="row">
+                  <div class="col-lg-12">
+                      <p>Copyright &copy; Pet Society 2016</p>
+                  </div>
+              </div>
+              <!-- /.row -->
+          </footer>
+
+
+        </div>
+    </body>
+</html>
