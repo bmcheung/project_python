@@ -6,15 +6,15 @@ import requests, json
 
 def index(request):
     return render(request, 'login/index.html')
-    
+
 def process(request):
     if request.method == 'POST':
         if request.POST['button']==Register:
             '''register'''
-            return redirect(reverse('login:home'))
+            return redirect(reverse('login:adopt'))
         elif request.POST['button']==Login:
             '''login'''
-            return redirect(reverse('login:home'))
+            return redirect(reverse('login:adopt'))
     return redirect(reverse('login:login'))
 
 def map(request):

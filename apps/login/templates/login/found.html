@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Found Pets</title>
+  </head>
+  <body>
+    {%for pet in found%}
+    {%if pet.record_type == 'FOUND'%}
+    <br>
+    <p>{{pet.animal_name}}</p>
+    <p>{{pet.age}}</p>
+    <img src="{{pet.image}}" alt="" />
+    <p>{{pet.animal_breed}}</p>
+    <p>{{pet.memo|safe}}</p>
+    <hr>
+    {%endif%}
+    {%endfor%}
+
+  </body>
+</html>

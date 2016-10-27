@@ -1,65 +1,72 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Geocoding service</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>local animal shelter and pet store</title>
-    {%load staticfiles%}
-    <link rel="stylesheet" type="text/css" href="{% static 'login/map.css' %}" />
-
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello</h1>
     <div id="floating-panel">
-      <strong>Start:</strong>
-      <input type='text' id="start" value="{{ street }} {{ city }} {{ state }}">
-      <br>
-      <strong>End:</strong>
-      <input type='text' id="end" value="{{ arena }}">
+      <input id="address" type="textbox" value="Sydney, NSW">
+      <input id="submit" type="button" value="Geocode">
     </div>
-    <div id="right-panel"></div>
     <div id="map"></div>
     <script>
-function initMap() {
-  var directionsDisplay = new google.maps.DirectionsRenderer;
-  var directionsService = new google.maps.DirectionsService;
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 7,
-    center: {lat: -122.21989119474374, lng: 47.32001562415261},
-  });
-  directionsDisplay.setMap(map);
-  directionsDisplay.setPanel(document.getElementById('right-panel'));
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: 47.548034, lng: -121.983603}
+        });
+        var geocoder = new google.maps.Geocoder();
 
-  var control = document.getElementById('floating-panel');
-  control.style.display = 'block';
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+      }
 
-  var calcRoute = function() {
-    calculateAndDisplayRoute(directionsService, directionsDisplay);
-  };
-
-  calcRoute();
-
-}
-
-function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-  var start = document.getElementById('start').value;
-  var end = document.getElementById('end').value;
-  directionsService.route({
-    origin: start,
-    destination: end,
-    travelMode: google.maps.TravelMode.DRIVING
-  }, function(response, status) {
-    if (status === google.maps.DirectionsStatus.OK) {
-      directionsDisplay.setDirections(response);
-    } else {
-      window.alert('Directions request failed due to ' + status);
-    }
-  });
-}
-
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhnuwsbjmv0dD4Oi9gN1ePzi6GLdcTOr0&callback=initMap"
-        async defer></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDulbAJH8JKdKUzZWar2Qpq1nYpsh-b1nA&callback=initMap">
+    </script>
   </body>
 </html>
