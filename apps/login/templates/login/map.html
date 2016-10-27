@@ -90,13 +90,17 @@
     </div>
     <div id="right-panel"></div>
     <div id="map"></div>
+    <script type="text/javascript">
+      var store_dict = {{store}}
+      var lost_dict = {{lost}}
+    </script>
     <script>
 function initMap() {
   var directionsDisplay = new google.maps.DirectionsRenderer;
   var directionsService = new google.maps.DirectionsService;
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 7,
-    center: {lat: -122.21989119474374, lng: 47.32001562415261},
+    zoom: 9,
+    center: {lat: -122.15732994260303, lng: 47.758012148556496}
   });
   directionsDisplay.setMap(map);
   directionsDisplay.setPanel(document.getElementById('right-panel'));
