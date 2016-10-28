@@ -7,28 +7,23 @@ from .forms import PetForm
 
 # Create your views here.
 gmaps = googlemaps.Client(key = 'AIzaSyDWRoV2ae3J-BCp0LKXcoFdmpHxIEQnXXE')
-
-# lost_url = 'https://data.kingcounty.gov/resource/murn-chih.json'
-# lost_json= requests.get(lost_url).json()
-# for item in lost_json:
-#     if 'location_for_map' in item:
-#         reverse_geocode_result = gmaps.reverse_geocode((item['location_for_map']['coordinates'][1],item['location_for_map']['coordinates'][0]))
-
 def index(request):
     return render(request, 'login/index.html')
 
 def process(request):
     if request.method == 'POST':
-        if request.POST['button']==Register:
+        if request.POST['button']=="Register":
             '''register'''
             return redirect(reverse('login:main'))
         elif request.POST['button']==Login:
             '''login'''
             return redirect(reverse('login:main'))
     return redirect(reverse('login:login'))
+def register(request):
+    return render(request, 'login/register.html')
 def main(request):
 
-    return render(request, 'login/index.html')
+    return render(request, 'login/main.html')
 
 def map(request):
     buy_url = 'https://data.kingcounty.gov/resource/nu2t-d4hv.json'

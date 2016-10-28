@@ -5,7 +5,6 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -57,8 +56,8 @@
           var locations;
           var icons = {
             adopt:"/static/login/image/adopt.png",
-            lost:"/static/login/image/lost.png",
-            found:"/static/login/image/found.png"
+            lost:"/static/login/image/lost2.png",
+            found:"/static/login/image/found2.png"
           };
           for(var i = 0; i< result.length; i++){
             if('record_type' in result[i]){
@@ -139,7 +138,6 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWRoV2ae3J-BCp0LKXcoFdmpHxIEQnXXE&callback=initMap"
     async defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
   </body>
 </html>
