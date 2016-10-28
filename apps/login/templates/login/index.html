@@ -108,14 +108,14 @@
 
             <div class="col-sm-4">
 
-                <a href="/map">{% load staticfiles %}
+                <a href="{%url 'login:map'%}">{% load staticfiles %}
                 <img class="img-circle img-responsive img-center" src= "{%static 'login/image/location.png'%}" alt=""/></a>
                 <h2>Location</h2>
                 <p>Local animal shelter and pet store</p>
             </div>
             <div class="col-sm-4">
                 {% load staticfiles %}
-                <a href="/lostandfound">
+                <a href="{%url 'login:lost'%}">
                 <img class="img-circle img-responsive img-center" src="{%static '/login/image/lostandfound.png'%}" alt=""/>
                 </a>
                 <h2>Lost and Found</h2>
@@ -123,7 +123,7 @@
             </div>
             <div class="col-sm-4">
                 {% load staticfiles %}
-                <a href="/adopt">
+                <a href="{%url 'login:adopt'%}">
                 <img class="img-circle img-responsive img-center" src="{% static '/login/image/adoption.png' %}" alt=""/>
                 </a>
                 <h2>Adoption and Purchase</h2>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+      {% load staticfiles %}
+    <script type="text/javascript" src = "{% static 'login/js/maps.js' %}"></script>
     <title>map</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -44,27 +46,7 @@
           center: {lat: 47.407781, lng: -122.254625}
         });
         var geocoder = new google.maps.Geocoder();
-
-        document.getElementById('submit').addEventListener('click', function() {
-          geocodeAddress(geocoder, map);
-        });
-      }
-
-      function geocodeAddress(geocoder, resultsMap) {
-        var address = document.getElementById('address').value;
-        geocoder.geocode({'address': address}, function(results, status) {
-          if (status === 'OK') {
-            resultsMap.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-              map: resultsMap,
-              position: results[0].geometry.location
-            });
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
-    </script>
+    }
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDulbAJH8JKdKUzZWar2Qpq1nYpsh-b1nA&callback=initMap">
     </script>

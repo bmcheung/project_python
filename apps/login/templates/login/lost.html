@@ -7,24 +7,36 @@
     <link rel="stylesheet" type="text/css" href="login/lost.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
-    </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style media="screen">
+      body{
+        padding: 10px;
+      }
+    </style>
+  </head>
   <body>
     <div class="container">
-      <div class="col-md-9 blogShort">
         {%for pet in lost%}
         {%if pet.record_type == 'LOST'%}
+        <div class="col-md-9 blogShort">
         <h1>{{pet.animal_name}}</h1>
-        <img src="{{pet.image}}" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
+        <img src="{{pet.image}}" width="500px" length="500px" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
           <article>
             <p>{{pet.age}}</p>
-            <p>{{pet.animal_breed}}{{pet.memo|safe}}</p>
+            <p>{{pet.animal_breed}}</P>
+            <p>{{pet.memo|safe}}</p>
           </article>
+          <br>
+        </div>
         {%endif%}
         {%endfor%}
           <a class="btn btn-blog pull-right marginBottom10" href="">Direction</a>
-      </div>
     </div>
-    <form class="" action="#" method="post" style = 'border:1px solid black; padding:5px; height:auto; width:300px;'>
+  <body>
+    <form class="" action="#" method="post" style = 'border:1px solid black; padding:5px; height:auto; width:330px;'>
+      <button type="button" name="button"><a href="{%url 'login:found'%}">Found a pet?</a></button>
+      <button type="button" name="button"><a href="{%url 'login:main'%}">Home</a></button>
       {%csrf_token%}
       <div class="item">
       <p><input type="text" name="pet_name" placeholder="Name"></p>
@@ -42,5 +54,6 @@
       </p>
       </div>
     </form>
+
   </body>
 </html>
