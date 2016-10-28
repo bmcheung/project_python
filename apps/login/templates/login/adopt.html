@@ -21,17 +21,24 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
     </script>
+    <div class="container">
+    <form action="{% url 'login:index' %}" method="POST" class="form-horizontal">
+        {% csrf_token %}
+        <input class="btn btn-default" id="submitbutton" type="submit" value="logout">
+    </form>
     {%for pet in adopt%}
     {%if pet.record_type == 'ADOPTABLE'%}
-    <br>
-    <p>{{pet.animal_name}}</p>
-    <p>{{pet.age}}</p>
-    <img src="{{pet.image}}" alt="" />
-    <p>{{pet.animal_breed}}</p>
-    <p>{{pet.memo|safe}}</p>
-    <p>
+    <div class="col-md-9 blogShort">
+    <h1>{{pet.animal_name}}</h1>
+    <img src="{{pet.image}}" width="500px" length="500px" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
+    <article>
+      <p>{{pet.age}}</p>
+      <p>{{pet.animal_breed}}</P>
+      <p>{{pet.memo|safe}}</p>
+    </article>
       {{pet.location_for_map}}
-    </p>
+      <br>
+    </div>
     <script type="text/javascript">
       var x = "{{pet.memo|safe}}"
     </script>
@@ -48,6 +55,6 @@
     <hr>
     {%endif%}
     {%endfor%}
-
+    </div>
   </body>
 </html>
