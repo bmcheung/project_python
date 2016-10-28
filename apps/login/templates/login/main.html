@@ -8,49 +8,34 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <div id="wrapper">
+    <div id="wrapper">
           <div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
+          <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="/">Pet Lover</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="{% url 'login:index'%}">Log Out</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Username</a></li>
+        <li><a href="#">Nam Tran</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
 </div>
-
-<div class="wide">
-  	<div class="col-xs-5 line"><hr></div>
-    <div class="col-xs-2 logo">Logo</div>
-    <div class="col-xs-5 line"><hr></div>
-</div>
-
-          {% if messages %}
-          <ul class="list-group">
-              {% for message in messages %}
-              <li class="list-group-item list-group-item-success"><h2>{{ message }}</h2></li>
-              {% endfor %}
-              <li class="list-group-item list-group-item-success">Successfully logged in!</li>
-          </ul>
-          {% endif %}
-
-          <form action="{% url 'login:index' %}" method="POST" class="form-horizontal">
-              {% csrf_token %}
-              <input class="btn btn-default" id="submitbutton" type="submit" value="logout">
-          </form>
-          <hr>
+    <div class="container">
+      <div class="wide">
+        	<div class="col-xs-5 line"><hr></div>
+          <img src="{% static '/login/image/pet.jpg' %}" alt=""/>
+          <div class="col-xs-5 line"><hr></div>
+      </div>
 
           <div class="row">
               <div class="col-sm-8">
@@ -74,31 +59,38 @@
           <!-- /.row -->
 
           <hr>
+              <div class=container>
+
 
               <div class="col-sm-4">
-                <a href="/map">{% load staticfiles %}
-                <img class="img-circle img-responsive img-center" src= "{%static 'login/image/location.png'%}" alt=""/></a>
+                <a href="/map">
+                {% load staticfiles %}
+                <img class="img-square img-responsive img-center" src= "{%static 'login/image/location.png'%}" alt=""/></a>
                 <h2>Location</h2>
                 <p>Local animal shelter and pet store</p>
               </div>
               <div class="col-sm-4">
+                <a href="{%url 'login:found'%}">
                   {% load staticfiles %}
-                  <img class="img-circle img-responsive img-center" src="{%static '/login/image/lostandfound.png'%}" alt=""/>
-                  <h2>Lost and Found</h2>
-                  <p>Post/Search for your beloved pet</p>
+                  <img class="img-square img-responsive img-center" src="{%static '/login/image/found.png'%}" alt=""/>
+                  <h2>Found Pet</h2>
+                  <p>List of found pet</p>
               </div>
               <div class="col-sm-4">
+                <a href="{%url 'login:lost'%}">
                   {% load staticfiles %}
-                  <img class="img-circle img-responsive img-center" src="{% static '/login/image/adoption.png' %}" alt=""/>
-                  <h2>Adoption and Purchase</h2>
-                  <p>Information on adoption and purchase your pet</p>
+                  <img class="img-square img-responsive img-center" src="{% static '/login/image/lost.png' %}" alt=""/>
+                  <h2>Lost Pet</h2>
+                  <p>List of lost pet</p>
               </div>
               <div class="col-sm-4">
+                <a href="{%url 'login:adopt'%}">
                   {% load staticfiles %}
-                  <img class="img-circle img-responsive img-center" src="{% static '/login/image/adoption.png' %}" alt=""/>
-                  <h2>Adoption and Purchase</h2>
+                  <img class="img-square img-responsive img-center" src="{% static '/login/image/adoption.png' %}" alt=""/>
+                  <h2>Adoption</h2>
                   <p>Information on adoption and purchase your pet</p>
               </div>
+          </div>
           </div>
           <!-- /.row -->
 
