@@ -4,13 +4,29 @@
     <meta charset="utf-8">
     <title>Lost Pets</title>
     {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="login/lost.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
+    </head>
   <body>
+    <div class="container">
+      <div class="col-md-9 blogShort">
+        {%for pet in lost%}
+        {%if pet.record_type == 'LOST'%}
+        <h1>{{pet.animal_name}}</h1>
+        <img src="{{pet.image}}" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
+          <article>
+            <p>{{pet.age}}</p>
+            <p>{{pet.animal_breed}}{{pet.memo|safe}}</p>
+          </article>
+        {%endif%}
+        {%endfor%}
+          <a class="btn btn-blog pull-right marginBottom10" href="">Direction</a>
+      </div>
+    </div>
     <form class="" action="#" method="post" style = 'border:1px solid black; padding:5px; height:auto; width:300px;'>
       {%csrf_token%}
+      <div class="item">
       <p><input type="text" name="pet_name" placeholder="Name"></p>
       <p><input type="text" name="pet_breed" placeholder="Breed"></p>
       <p><input type="text" name="pet_location" placeholder="Location Lost"></p>
@@ -24,18 +40,7 @@
       <p>
         <input type="submit" name="name" value="Submit">
       </p>
+      </div>
     </form>
-
-    {%for pet in lost%}
-    {%if pet.record_type == 'LOST'%}
-    <br>
-    <p>{{pet.animal_name}}</p>
-    <p>{{pet.age}}</p>
-    <img src="{{pet.image}}" alt="" />
-    <p>{{pet.animal_breed}}</p>
-    <p>{{pet.memo|safe}}</p>
-    <hr>
-    {%endif%}
-    {%endfor%}
   </body>
 </html>
