@@ -62,12 +62,16 @@ def lost(request):
     return render(request, 'login/lost.html', context)
 def lost_process(request):
     if request.method == 'POST':
-        bound_form = petForm(request.POST)
-        if bound_form.is_valid():
-            bound_form.save()
-        else:
-            for data in bound_form.errors.itervalues():
-                messages.error(request, data)
+        Pet.objects.create(
+            name = request.POST['name'],
+            breed = request.POST['breed'],
+            location_lost = request.POST['location_lost'],
+            date_lost = request.POST['date_lost'],
+            status = 'LOST',
+            notes = request.POST['notes'],
+            image = request.POST['image'],
+            listed_by = User.objects.get(id = request.session['id'])
+        )
     return redirect(reverse('login:lost'))
 def found(request):
     lost_url = 'https://data.kingcounty.gov/resource/murn-chih.json'
@@ -82,10 +86,14 @@ def found(request):
     return render(request, 'login/found.html', context)
 def found_process(request):
     if request.method == 'POST':
-        bound_form = petForm(request.POST)
-        if bound_form.is_valid():
-            bound_form.save()
-        else:
-            for data in bound_form.errors.itervalues():
-                messages.error(request, data)
+        Pet.objects.create(
+            name = request.POST['name'],
+            breed = request.POST['breed'],
+            location_lost = request.POST['location_lost'],
+            date_lost = request.POST['date_lost'],
+            status = 'FOUND',
+            notes = request.POST['notes'],
+            image = request.POST['image'],
+            listed_by = User.objects.get(id = request.session['id'])
+        )
     return redirect(reverse('login:found'))

@@ -3,27 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>Found Pets</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style media="screen">
+      body{
+        padding: 10px;
+      }
+    </style>
   </head>
   <body>
     <button type="button" name="button"><a href="{%url 'login:lost'%}">Lost a pet?</a></button>
+    <button type="button" name="button"><a href="{%url 'login:main'%}">Home</a></button>
+    <!-- <button type="button" name="button"><a href="{%url 'login:main'%}">Logout</a></button> -->
 
-    <form class="" action="index.html" method="post">
-      {%csrf_token%}
-      {{petForm.as_p}}
-      <input type="submit" name="name" value="Submit">
-    </form>
     <form class="" action="#" method="post" style = 'border:1px solid black; padding:5px; height:auto; width:330px;'>
       {%csrf_token%}
-      <p><input type="text" name="pet_name" placeholder="Name"></p>
-      <p><input type="text" name="pet_breed" placeholder="Breed"></p>
-      <p><input type="text" name="pet_location" placeholder="Location Lost"></p>
-      <p><input type="date" name="pet_date" placeholder="Date Lost"></p>
-      <p><textarea name="pet_notes" rows="8" cols="40" placeholder="Notes"></textarea></p>
+      <p><input type="text" name="name" placeholder="Name"></p>
+      <p><input type="text" name="breed" placeholder="Breed"></p>
+      <p><input type="text" name="location_lost" placeholder="Location Found"></p>
+      <p><input type="date" name="date_lost" placeholder="Date Found"></p>
+      <p><textarea name="notes" rows="8" cols="40" placeholder="Notes"></textarea></p>
       <p>Pet Image: <input type="file" name="pet_image" ></p>
-      <select class="" name="pet_status">
-        <option value="LOST">Lost</option>
-        <option value="FOUND">Found</option>
-      </select>
       <p><input type="submit" name="name" value="Submit"></p>
     </form>
     {%for pet in found%}
@@ -37,6 +39,5 @@
     <hr>
     {%endif%}
     {%endfor%}
-
   </body>
 </html>

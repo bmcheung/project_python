@@ -16,6 +16,8 @@
   <body>
     <button type="button" name="button"><a href="{%url 'login:found'%}">Found a pet?</a></button>
     <button type="button" name="button"><a href="{%url 'login:main'%}">Home</a></button>
+    <!-- <button type="button" name="button"><a href="{%url 'login:main'%}">Logout</a></button> -->
+
     <form class="" action="#" method="post" style = 'border:1px solid black; padding:5px; height:auto; width:330px;'>
       {%csrf_token%}
       <p><input type="text" name="pet_name" placeholder="Name"></p>
