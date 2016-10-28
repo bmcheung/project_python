@@ -8,11 +8,11 @@ from .forms import PetForm
 # Create your views here.
 gmaps = googlemaps.Client(key = 'AIzaSyDWRoV2ae3J-BCp0LKXcoFdmpHxIEQnXXE')
 
-lost_url = 'https://data.kingcounty.gov/resource/murn-chih.json'
-lost_json= requests.get(lost_url).json()
-for item in lost_json:
-    if 'location_for_map' in item:
-        reverse_geocode_result = gmaps.reverse_geocode((item['location_for_map']['coordinates'][1],item['location_for_map']['coordinates'][0]))
+# lost_url = 'https://data.kingcounty.gov/resource/murn-chih.json'
+# lost_json= requests.get(lost_url).json()
+# for item in lost_json:
+#     if 'location_for_map' in item:
+#         reverse_geocode_result = gmaps.reverse_geocode((item['location_for_map']['coordinates'][1],item['location_for_map']['coordinates'][0]))
 
 def index(request):
     return render(request, 'login/index.html')
@@ -73,10 +73,11 @@ def found(request):
     lost_url = 'https://data.kingcounty.gov/resource/murn-chih.json'
     lost_json= requests.get(lost_url).json()
     post = Pet.objects.filter(status = 'FOUND')
+    form = PetForm()
     context = {
     'found' : lost_json,
     'posts' : post,
-    'petForm': PetForm()
+    'petForm': form
     }
     return render(request, 'login/found.html', context)
 def found_process(request):

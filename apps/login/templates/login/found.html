@@ -9,7 +9,7 @@
 
     <form class="" action="index.html" method="post">
       {%csrf_token%}
-      {{petForm}}
+      {{petForm.as_p}}
       <input type="submit" name="name" value="Submit">
     </form>
     <form class="" action="#" method="post" style = 'border:1px solid black; padding:5px; height:auto; width:330px;'>
